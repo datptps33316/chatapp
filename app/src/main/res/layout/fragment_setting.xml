@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:background="@color/white"
         android:orientation="vertical"
         android:padding="12dp">
@@ -40,7 +40,7 @@
             android:id="@+id/userinfor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp">
+            android:layout_margin="10dp">
 
             <ProgressBar
                 android:id="@+id/progressBar"
@@ -66,7 +66,7 @@
                 tools:ignore="MissingConstraints" />
 
             <TextView
-                android:id="@+id/name_user"
+                android:id="@+id/nameuser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/image_users"
@@ -92,18 +92,18 @@
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.176"
+                app:layout_constraintHorizontal_bias="0.212"
                 app:layout_constraintStart_toEndOf="@+id/image_users"
-                app:layout_constraintTop_toBottomOf="@+id/name_user"
-                app:layout_constraintVertical_bias="0.018" />
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <RelativeLayout
-            android:id="@+id/updateimg"
+        <LinearLayout
+            android:id="@+id/open"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_marginBottom="5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
             android:paddingVertical="10dp"
             android:paddingStart="20dp">
 
@@ -118,30 +118,182 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_marginBottom="4dp"
-                android:layout_toRightOf="@+id/image_account"
                 android:text="Account"
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/mt"
-                android:layout_width="wrap_content"
+        </LinearLayout>
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/gh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F5F6F6"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:id="@+id/updateavatar"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/account"
-                android:layout_marginStart="17dp"
-                android:layout_toRightOf="@id/image_account"
-                android:text="Private ,security, change number "
-                android:textColor="@color/xam"
-                android:textStyle="normal" />
+                android:paddingVertical="10dp"
+                android:paddingStart="20dp">
 
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_marginStart="20dp"
+                    android:id="@+id/hj"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:foregroundGravity="center_vertical"
+                    android:src="@drawable/updateavatar" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_toRightOf="@+id/hj"
+                    android:text="Update profile picture"
+                    android:textAlignment="center"
+                    android:textSize="15sp"
+                    />
+
+            </RelativeLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_below="@+id/mt"
                 android:layout_marginTop="4dp"
                 android:background="#F5F6F6" />
-        </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/updateinfor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:paddingStart="20dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_marginStart="20dp"
+                    android:id="@+id/hh"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:foregroundGravity="center_vertical"
+                    android:src="@drawable/updif" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_toRightOf="@+id/hh"
+                    android:text="update name"
+                    android:textAlignment="center"
+                    android:textSize="15sp"
+                    />
+                <LinearLayout
+                    android:id="@+id/updatename"
+                    android:visibility="gone"
+                    android:paddingHorizontal="30dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_below="@+id/hh"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    tools:ignore="UnknownId">
+                    <TextView
+                        android:textColor="@color/red"
+                        android:textSize="15sp"
+                        android:paddingStart="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Display name"/>
+                    <EditText
+                        android:id="@+id/edtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"/>
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/upn"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:textColor="@color/white"
+                        android:paddingHorizontal="30dp"
+                        android:textSize="10sp"
+                        android:background="@drawable/bg_xacnhan"
+                        android:text="update"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="4dp"
+                android:background="#F5F6F6" />
+            <RelativeLayout
+                android:id="@+id/changepassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:paddingStart="20dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_marginStart="20dp"
+                    android:id="@+id/ll"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:foregroundGravity="center_vertical"
+                    android:src="@drawable/changepassword" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_toRightOf="@+id/ll"
+                    android:text="change password"
+                    android:textAlignment="center"
+                    android:textSize="15sp"
+                    />
+
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/kj"
+                android:layout_marginTop="4dp"
+                android:background="#F5F6F6" />
+
+            <RelativeLayout
+                android:id="@+id/logour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:paddingStart="20dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_marginStart="20dp"
+                    android:id="@+id/image_Invite"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:foregroundGravity="center_vertical"
+                    android:src="@drawable/logout" />
+
+                <TextView
+                    android:id="@+id/Invite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_toRightOf="@+id/image_Invite"
+                    android:text="Đăng Xuất"
+                    android:textAlignment="center"
+                    android:textSize="15sp"
+                     />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/lk"
+            android:layout_marginTop="4dp"
+            android:background="#F5F6F6" />
 
         <RelativeLayout
             android:id="@+id/udateinf"
@@ -186,7 +338,8 @@
                 android:background="#F5F6F6" />
         </RelativeLayout>
 
-        <RelativeLayout
+        <LinearLayout
+            android:layout_gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingVertical="10dp"
@@ -208,23 +361,15 @@
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/kj"
+            <Switch
+                android:layout_marginStart="120dp"
+                android:id="@+id/sw"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/Notifications"
-                android:layout_marginStart="17dp"
-                android:layout_marginLeft="17dp"
-                android:layout_marginTop="4dp"
-                android:layout_toRightOf="@id/image_Notifications"
-                android:text="Messages, group and others "
-                android:textColor="@color/xam"
-                android:textStyle="normal" />
-            <Switch
                 android:layout_alignParentEnd="true"
-                android:layout_marginRight="29dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_marginRight="29dp" >
+
+            </Switch>
 
             <View
                 android:layout_width="match_parent"
@@ -232,7 +377,14 @@
                 android:layout_below="@+id/kj"
                 android:layout_marginTop="4dp"
                 android:background="#F5F6F6" />
-        </RelativeLayout>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/l"
+            android:layout_marginTop="4dp"
+            android:background="#F5F6F6" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -277,39 +429,7 @@
                 android:background="#F5F6F6" />
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/logour"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingVertical="10dp"
-            android:paddingStart="20dp">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/image_Invite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:foregroundGravity="center_vertical"
-                android:src="@drawable/baseline_logout_24" />
-
-            <TextView
-                android:id="@+id/Invite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_toRightOf="@+id/image_Invite"
-                android:text="LOG OUR"
-                android:textAlignment="center"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@+id/Invite"
-                android:layout_marginTop="4dp"
-                android:background="#F5F6F6" />
-
-        </RelativeLayout>
 
 
     </LinearLayout>

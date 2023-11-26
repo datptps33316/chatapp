@@ -39,8 +39,10 @@
             android:name=".LoginMainActivity"
             android:exported="false" />
         <activity
+            android:windowSoftInputMode="adjustPan"
             android:name=".MainActivity"
             android:exported="false" />
+
         <activity
             android:name=".WelcomeMainActivity"
             android:exported="true">

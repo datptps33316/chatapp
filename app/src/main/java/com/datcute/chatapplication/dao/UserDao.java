@@ -21,6 +21,7 @@ import com.datcute.chatapplication.model.FCMPayload;
 import com.datcute.chatapplication.model.FCMResponse;
 import com.datcute.chatapplication.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
@@ -327,6 +328,28 @@ public class UserDao {
 
             }
         });
+    }
+    public static void upDateName( String name ,Context context){
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        String userId = currentUser.getUid();
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference userRef = db.collection("Users").document(userId);
+        userRef.update("name", name)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        // Cập nhật tên thành công
+                        Toast.makeText(context, "Tên đã được cập nhật!", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Xử lý khi cập nhật tên thất bại
+                        Toast.makeText(context, "Cập nhật tên thất bại!", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
 
