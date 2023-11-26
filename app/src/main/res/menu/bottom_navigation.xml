@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/mnmessg"
+        android:title="Home"
+        android:icon="@drawable/baseline_message_24"/>
+    <item android:id="@+id/mn_contacts"
+        android:title="Contacts"
+        android:icon="@drawable/baseline_add_ic_call_24"/>
+    <item android:id="@+id/mn_friend"
+        android:title="Friend"
+        android:icon="@drawable/baseline_people_24"/>
+    <item android:id="@+id/mn_setting"
+        android:title="Setting"
+        android:icon="@drawable/baseline_settings_24"/>
+
+</menu>

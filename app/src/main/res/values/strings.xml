@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">ChatApp</string>
+    <string name="sign_up">Sign Up With Email</string>
+    <string name="btn_register">Create an Account</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="enter_otp">Enter Otp</string>
+    <string name="send_to_otp">send to Otp</string>
+    <string name="get_chatting">Get chatting with friends and family today ,by signing up for our chat app! </string>
+    <string name="Your_name">Your name</string>
+    <string name="Your_email">Your email</string>
+    <string name="Your_password">Your password</string>
+    <string name="login">Log in to Chat App</string>
+    <string name="Welcome">Welcome back ! Sign in using your social account or email to continue us</string>
+    <string name="btnlogin"> Log In</string>
+    <string name="Forgot_password"> Forgot password ?</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

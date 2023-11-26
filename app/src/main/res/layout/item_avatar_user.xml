@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="12dp"
+    android:layout_height="90dp">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/image_user"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/img_5"/>
+    <View
+        android:id="@+id/status_dot"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_alignBottom="@id/image_user"
+        android:layout_alignEnd="@id/image_user"
+        android:background="@drawable/status_dot_online" />
+    <TextView
+        android:id="@+id/name_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alex LinderSon"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_toRightOf="@+id/image_user"
+        android:layout_marginStart="8dp"/>
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What your name ?"
+        android:layout_below="@+id/name_user"
+        android:layout_toRightOf="@+id/image_user"
+        android:layout_marginStart="8dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/thongbao"
+        android:layout_marginBottom="12dp"
+        android:text="2minago"/>
+    <TextView
+        android:id="@+id/thongbao"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:text="3"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_alignParentBottom="true"
+        android:textAlignment="center"
+        android:background="@drawable/thongbao"
+        android:layout_alignParentEnd="true"/>
+
+
+</RelativeLayout>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "842859751304",
+    "project_id": "chat-app-de681",
+    "storage_bucket": "chat-app-de681.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:842859751304:android:4af74af2d93b32bdea3c3d",
+        "android_client_info": {
+          "package_name": "com.datcute.chatapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjyotrz99dHOm0Q6i4qLEY02D7qN42oWs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

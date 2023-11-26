@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_marginStart="20dp"
+            android:id="@+id/imageuser1"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/img_5"/>
+        <TextView
+            android:id="@+id/nameuser1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alex LinderSon"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_toRightOf="@+id/imageuser1"
+            android:layout_marginStart="20dp"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_marginTop="8dp"
+            android:id="@+id/xn"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="chấp nhận"
+            android:textSize="10sp"
+            android:textColor="@color/white"
+            android:layout_below="@+id/nameuser1"
+            android:layout_toRightOf="@+id/imageuser1"
+            android:background="#3EAEF4"
+            android:layout_marginStart="30dp"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="xóa"
+            android:textSize="10sp"
+            android:paddingVertical="10dp"
+            android:background="#E0EBE9"
+            android:layout_below="@+id/nameuser1"
+            android:layout_toRightOf="@+id/xn"
+            android:textColor="@color/red"
+            android:layout_marginStart="20dp"/>
+        <TextView
+            android:id="@+id/ngay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2ngay"
+            android:layout_toRightOf="@+id/nameuser1"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="3dp"/>
+        </RelativeLayout>
+
+
+
+</RelativeLayout>
