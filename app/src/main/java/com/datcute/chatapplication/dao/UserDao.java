@@ -24,6 +24,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -41,6 +42,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -91,77 +93,83 @@ public class UserDao {
 
     static long diffInDays;
     public static void getListSenderIdFromFirebase(String receiverId, String value, SenderIdCallback callback) {
-        Log.e("đfd", "llllllll");
-
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        Log.e("id", receiverId.toString());
         ArrayList<UserSender> listSenderId = new ArrayList<>();
+
         db.collection(COLLECTION_FRIENDS)
                 .whereEqualTo("receiverId", receiverId)
                 .whereEqualTo("status", value)
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if (error != null) {
-                            Log.e(getClass().getName(), error.toString());
-                        }
-                        if (value != null) {
-
-                            for (DocumentSnapshot document : value) {
-                                Timestamp  time = document.getTimestamp("timestamp");
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        QuerySnapshot querySnapshot = task.getResult();
+                        if (querySnapshot != null) {
+                            for (DocumentSnapshot document : querySnapshot.getDocuments()) {
+                                Timestamp time = document.getTimestamp("timestamp");
                                 Date currentTime = Calendar.getInstance().getTime();
                                 // Tính khoảng thời gian
                                 long diffInMillis = currentTime.getTime() - time.toDate().getTime();
                                 // Chuyển đổi khoảng thời gian thành số ngày
-                                diffInDays = TimeUnit.MILLISECONDS.toDays(diffInMillis);
+                                long diffInDays = TimeUnit.MILLISECONDS.toDays(diffInMillis);
                                 String senderIdUser = document.getString("senderId");
-                                Log.e("senderid", senderIdUser);
-                                listSenderId.add(new UserSender(senderIdUser,diffInDays));
+                                listSenderId.add(new UserSender(senderIdUser, diffInDays));
                             }
                             callback.onSenderListReady(listSenderId);
                         }
+                    } else {
+                        // Xử lý lỗi nếu có
                     }
                 });
     }
 
 
+
     public static void getFriendsRealtime(String receiverId, String value, GetInformationCallback callback) {
+        listUser.clear();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+
         getListSenderIdFromFirebase(receiverId, value, new SenderIdCallback() {
             @Override
             public void onSenderListReady(ArrayList<UserSender> list) {
+                List<Task<?>> tasks = new ArrayList<>();
+
                 for (UserSender us : list) {
                     String senderID = us.getSenderID();
                     long time = us.getTime();
-                    db.collection("Users")
+
+                    Task<QuerySnapshot> queryTask = db.collection("Users")
                             .whereEqualTo("uid", senderID)
-                            .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                                @Override
-                                public void onEvent(@Nullable QuerySnapshot querySnapshot, @Nullable FirebaseFirestoreException e) {
-                                    if (e != null) {
-                                        // Xử lý lỗi nếu có
-                                        return;
-                                    }
-                                    listUser.clear();
-                                    for (DocumentSnapshot document : querySnapshot.getDocuments()) {
-                                        String name = document.getString("name");
-                                        String image = document.getString("image");
-                                        String email = document.getString("email");
-                                        String uid = document.getString("uid");
+                            .get();
 
-                                        if (image == null) {
-                                            image = "gs://chat-app-de681.appspot.com/images1700071640945/profile.jpg";
-                                        }
-                                        listUser.add(new User(name,email, uid, Uri.parse(image),time));
-                                    }
-                                    callback.onGetListFriendsRequest(listUser);
-                                }
-                            });
+                    tasks.add(queryTask);
+
+                    queryTask.addOnSuccessListener(queryDocumentSnapshots -> {
+                        for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
+                            String name = document.getString("name");
+                            String image = document.getString("image");
+                            String email = document.getString("email");
+                            String uid = document.getString("uid");
+
+                            if (image == null) {
+                                image = "https://firebasestorage.googleapis.com/v0/b/chat-app-de681.appspot.com/o/images1700910106121%2Fprofile.jpg?alt=media&token=d0e37f44-fbbe-41e0-9f11-2f5edfe1cc1b";
+                            }
+                            listUser.add(new User(name, email, uid, Uri.parse(image), time));
+                        }
+                    });
                 }
-            }
 
+                Tasks.whenAllComplete(tasks)
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                callback.onGetListFriendsRequest(listUser);
+                            } else {
+                                // Xử lý lỗi nếu có
+                            }
+                        });
+            }
         });
     }
+
 
     public static void accept(String senderId, FragmentFriendRq.UpdateStatusFriends updateStatusFriends) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();

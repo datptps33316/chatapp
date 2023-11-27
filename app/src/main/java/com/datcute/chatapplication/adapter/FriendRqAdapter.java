@@ -36,6 +36,9 @@ public class FriendRqAdapter extends RecyclerView.Adapter<FriendRqAdapter.UserVi
         this.mItemClickListener = itemClickListener;
 
     }
+    public void updateData(ArrayList<User> newList) {
+        this.mFriendRequestList = newList;
+    }
 
 
     @NonNull
@@ -76,7 +79,7 @@ public class FriendRqAdapter extends RecyclerView.Adapter<FriendRqAdapter.UserVi
             xnButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mItemClickListener.onItemAcceptClick(getAdapterPosition());
+                    mItemClickListener.onItemAcceptClick(getBindingAdapterPosition());
                 }
             });
         }

@@ -24,6 +24,8 @@ import java.util.List;
 public class FragmentFriendRq extends Fragment {
     private FragmentFriendRequestBinding binding;
     FriendRqAdapter mAdapter;
+    private boolean isGetFriendsRealtimeCalled = false;
+
 
 
 
@@ -69,17 +71,21 @@ public class FragmentFriendRq extends Fragment {
     }
 
     public void getListFriendRequest() {
-        UserDao.getFriendsRealtime(UserDao.getReceiverId(), "0", new GetInformationCallback() {
-            @Override
-            public void onGetListFriendsRequest(ArrayList<User> listUser) {
-                conFigurationRecyclerView(listUser);
-            }
-        });
+        if (!isGetFriendsRealtimeCalled) {
+            UserDao.getFriendsRealtime(UserDao.getReceiverId(), "0", new GetInformationCallback() {
+                @Override
+                public void onGetListFriendsRequest(ArrayList<User> listUser) {
+                  conFigurationRecyclerView(listUser);
+                }
+            });
+            isGetFriendsRealtimeCalled = true; // Đánh dấu rằng đã gọi hàm
+        }
     }
 
     public interface UpdateStatusFriends{
         boolean onSuccess (Boolean b);
     }
+
 
 
 

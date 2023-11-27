@@ -67,6 +67,13 @@ public class LoginMainActivity extends AppCompatActivity {
                 });
             }
         });
+        binding.forgotpassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickForgotPassWord();
+            }
+        });
+
 
     }
 

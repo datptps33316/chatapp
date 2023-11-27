@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".MessageActivity">
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_alignParentTop="true"
+        android:gravity="center_vertical"
+        android:paddingVertical="20dp"
+        android:paddingHorizontal="20dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_marginStart="10dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/muitenback"/>
+       <androidx.constraintlayout.widget.ConstraintLayout
+           android:layout_marginStart="15dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content">
+
+           <de.hdodenhof.circleimageview.CircleImageView
+               android:id="@+id/circleImageView"
+               android:layout_width="50dp"
+               android:layout_height="50dp"
+               android:src="@drawable/img_5"
+               tools:ignore="MissingConstraints" />
+
+           <de.hdodenhof.circleimageview.CircleImageView
+               android:layout_width="15dp"
+               android:layout_height="15dp"
+               android:background="@color/blue"
+               app:layout_constraintBottom_toBottomOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintHorizontal_bias="1.0"
+               app:layout_constraintStart_toStartOf="@+id/circleImageView"
+               app:layout_constraintTop_toTopOf="parent"
+               app:layout_constraintVertical_bias="1.0"
+               tools:ignore="MissingConstraints" />
+       </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_marginStart="12dp"
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/name"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jhon Abraham"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_marginStart="5dp"
+                android:textColor="@color/xam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Active now"/>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/call"
+                android:layout_width="27dp"
+                android:layout_toStartOf="@+id/callvd"
+                android:layout_height="27dp"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/goi"/>
+            <ImageView
+                android:id="@+id/callvd"
+                android:layout_alignParentEnd="true"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/video"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/xam"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:paddingHorizontal="12dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:paddingVertical="12dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/clipattachment"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="250dp"
+            android:paddingStart="12dp"
+            android:hint="Write your message"
+            android:background="@drawable/bg_message"
+            android:layout_height="50dp"/>
+        <ImageView
+            android:layout_marginStart="10dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/camera"/>
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/microphone"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -19,7 +19,29 @@
         android:textStyle="bold"
         android:textSize="20sp"
         android:layout_toRightOf="@+id/image_user"
-        android:layout_marginStart="8dp"/>
+        android:layout_marginStart="15dp"/>
+    <LinearLayout
+        android:layout_marginEnd="16dp"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/nhantin"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="7dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/chatballoon"/>
+        <ImageView
+            android:id="@+id/call"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="7dp"
+            android:layout_toRightOf="@+id/nhantin"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/message"/>
+    </LinearLayout>
+
 
 
 </RelativeLayout>

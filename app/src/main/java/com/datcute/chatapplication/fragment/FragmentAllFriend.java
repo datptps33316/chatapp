@@ -1,5 +1,6 @@
 package com.datcute.chatapplication.fragment;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,12 +14,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.datcute.chatapplication.MessageActivity;
 import com.datcute.chatapplication.adapter.AllFriendAdapter;
 import com.datcute.chatapplication.adapter.FriendRqAdapter;
 import com.datcute.chatapplication.dao.UserDao;
 import com.datcute.chatapplication.databinding.FragmentAllFriendBinding;
 import com.datcute.chatapplication.databinding.FragmentContactsBinding;
 import com.datcute.chatapplication.interfacce.GetInformationCallback;
+import com.datcute.chatapplication.interfacce.onItemRcvClickListener;
 import com.datcute.chatapplication.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -56,7 +59,22 @@ private FragmentAllFriendBinding binding;
 
     }
     public void conFigurationRecyclerView(ArrayList<User> list) {
-        mAdapter = new AllFriendAdapter(list,getContext());
+        mAdapter = new AllFriendAdapter(list, getContext(), new onItemRcvClickListener() {
+            @Override
+            public void onItemAcceptClick(int position) {
+                String name = list.get(position).getName();
+                String image = String.valueOf(list.get(position).getImage());
+                Intent intent = new Intent(requireActivity(), MessageActivity.class);
+                intent.putExtra("name",name);
+                intent.putExtra("image",image);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onItemDeleteClick(int position) {
+
+            }
+        });
         LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false);
         binding.RecyclerView.setLayoutManager(layoutManager);
         binding.RecyclerView.setAdapter(mAdapter);

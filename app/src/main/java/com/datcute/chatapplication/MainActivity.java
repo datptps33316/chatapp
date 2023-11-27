@@ -71,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         String imageUri = getIntent().getStringExtra("image");
         String name = getIntent().getStringExtra("name");
+        if(imageUri == null){
+            imageUri ="https://firebasestorage.googleapis.com/v0/b/chat-app-de681.appspot.com/o/images1700910106121%2Fprofile.jpg?alt=media&token=d0e37f44-fbbe-41e0-9f11-2f5edfe1cc1b";
+        }
         user = new User(name,Uri.parse(imageUri));
         setFragmentDefault();
         onClickRequestPermission();
@@ -116,6 +119,9 @@ public class MainActivity extends AppCompatActivity {
                             DocumentSnapshot modifiedDocument = documentChange.getDocument();
                             String name = modifiedDocument.getString(NAME_USER_KEY);
                             String image = modifiedDocument.getString(PHOTO_USER_KEY);
+                            if(image == null){
+                                image ="https://firebasestorage.googleapis.com/v0/b/chat-app-de681.appspot.com/o/images1700910106121%2Fprofile.jpg?alt=media&token=d0e37f44-fbbe-41e0-9f11-2f5edfe1cc1b";
+                            }
                             user = new User(name, Uri.parse(image));
 
                             break;
